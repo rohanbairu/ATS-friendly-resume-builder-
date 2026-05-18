@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ATS Resume Builder</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+  <header>
+    <div class="logo">⬛ ATS Resume Builder</div>
+    <div class="header-actions">
+      <button id="ats-score-btn" class="btn-secondary">ATS Score</button>
+      <button id="print-btn" class="btn-primary">⬇ Download PDF</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="form-panel">
+      <div class="tabs">
+        <button class="tab active" data-tab="basics">Basics</button>
+        <button class="tab" data-tab="experience">Experience</button>
+        <button class="tab" data-tab="education">Education</button>
+        <button class="tab" data-tab="skills">Skills</button>
+      </div>
+
+      <div class="tab-content active" id="tab-basics">
+        <h3>Personal Info</h3>
+        <div class="form-grid">
+          <div class="field full"><label>Full Name *</label><input type="text" id="name" placeholder="e.g. Priya Sharma" /></div>
+          <div class="field full"><label>Job Title *</label><input type="text" id="title" placeholder="e.g. Senior Software Engineer" /></div>
+          <div class="field"><label>Email *</label><input type="email" id="email" placeholder="priya@email.com" /></div>
+          <div class="field"><label>Phone</label><input type="text" id="phone" placeholder="+91 98765 43210" /></div>
+          <div class="field"><label>Location</label><input type="text" id="location" placeholder="Hyderabad, India" /></div>
+          <div class="field"><label>LinkedIn</label><input type="text" id="linkedin" placeholder="linkedin.com/in/priya" /></div>
+          <div class="field full"><label>GitHub / Portfolio</label><input type="text" id="portfolio" placeholder="github.com/priya" /></div>
+          <div class="field full">
+            <label>Professional Summary *</label>
+            <textarea id="summary" rows="4" placeholder="Write a 2–3 sentence ATS-optimised summary..."></textarea>
+            <span class="hint">💡 Use keywords from the job description here.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="tab-content" id="tab-experience">
+        <h3>Work Experience</h3>
+        <div id="exp-list"></div>
+        <button class="add-btn" id="add-exp">+ Add Experience</button>
+      </div>
+
+      <div class="tab-content" id="tab-education">
+        <h3>Education</h3>
+        <div id="edu-list"></div>
+        <button class="add-btn" id="add-edu">+ Add Education</button>
+      </div>
+
+      <div class="tab-content" id="tab-skills">
+        <h3>Skills</h3>
+        <div class="field full">
+          <label>Technical Skills</label>
+          <input type="text" id="tech-skills" placeholder="JavaScript, React, Node.js, SQL, Git..." />
+          <span class="hint">💡 Separate with commas. Match exact terms from job postings.</span>
+        </div>
+        <div class="field full" style="margin-top:16px">
+          <label>Soft Skills</label>
+          <input type="text" id="soft-skills" placeholder="Team Leadership, Agile, Problem Solving..." />
+        </div>
+        <div class="field full" style="margin-top:16px">
+          <label>Certifications / Tools</label>
+          <input type="text" id="certs" placeholder="AWS Certified, Docker, Figma..." />
+        </div>
+      </div>
+    </section>
+
+    <section class="preview-panel">
+      <div class="resume" id="resume">
+        <div class="r-header">
+          <h1 id="r-name">Your Name</h1>
+          <p id="r-title" class="r-subtitle">Job Title</p>
+          <div class="r-contact" id="r-contact"></div>
+        </div>
+        <div class="r-section"><h2>Summary</h2><p id="r-summary"></p></div>
+        <div class="r-section" id="r-exp-section"><h2>Experience</h2><div id="r-exp-list"></div></div>
+        <div class="r-section" id="r-edu-section"><h2>Education</h2><div id="r-edu-list"></div></div>
+        <div class="r-section" id="r-skills-section"><h2>Skills</h2><div id="r-skills-list"></div></div>
+      </div>
+    </section>
+  </main>
+
+  <div id="ats-modal" class="modal hidden">
+    <div class="modal-box">
+      <button class="modal-close" id="close-modal">✕</button>
+      <h2>ATS Score</h2>
+      <div class="score-circle"><span id="score-num">0</span><span>/100</span></div>
+      <ul id="ats-feedback"></ul>
+      <p class="ats-tip">Higher score = better chance of passing ATS filters.</p>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
